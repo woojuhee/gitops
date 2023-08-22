@@ -1,0 +1,14 @@
+global:
+  imageRegistry: docker.io
+  storageClass: nfs-csi
+
+image:
+  debug: true
+
+rootUser:
+  password: root
+
+replicaCount: 3
+
+persistence:
+  enabled: true
