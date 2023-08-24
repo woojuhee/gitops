@@ -4,7 +4,9 @@ DOCKER_IMAGE_NAME ?= openstack-admin-console-ui
 DOCKER_PROJECT_NAME ?= docker.io/openstack-pre
 DOCKER_IMAGE_VERSION ?= $(shell git describe)
 DOCKER_REPOSITORY ?= $(DOCKER_PROJECT_NAME)/$(DOCKER_IMAGE_NAME)
-HELM_GENERATED_PATH ?= kustomize/base/generated/
+HELM_GENERATED_PATH ?= kustomize/base/generated
+HELM_VALUE_PATH ?= helm/values.yaml
+HELM_CHART_VERSION ?= 9.0.5
 NAMESPACE ?= dev
 GIT_BRANCH ?= master
 
@@ -22,7 +24,7 @@ generated: ## Helm chart template generated
 	@helm repo add bitnami https://charts.bitnami.com/bitnami
 	@helm repo update
 	@rm -rf ./$(HELM_GENERATED_PATH)/*
-	@helm template mariadb --namespace $(NAMESPACE) -f ./helm/values.yaml --output-dir ./$(HELM_GENERATED_PATH) bitnami/mariadb-galera --version 9.0.5
+	@helm template mariadb --namespace $(NAMESPACE) -f ./$(HELM_VALUE_PATH) --output-dir ./$(HELM_GENERATED_PATH) bitnami/mariadb-galera --version $(HELM_CHART_VERSION)
 
 build-image: ## Build image
 	@docker build -t $(DOCKER_REPOSITORY):latest .

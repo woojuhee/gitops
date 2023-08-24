@@ -1,9 +1,11 @@
 global:
-  imageRegistry: docker.io
+  imageRegistry: harbor.jhee.co.kr
   storageClass: nfs-csi
 
 image:
   debug: true
+  repository: docker-devops/mariadb-galera
+  tag: 11.0.3-debian-11-r7-1
 
 rootUser:
   password: root
