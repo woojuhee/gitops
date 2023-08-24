@@ -40,7 +40,7 @@ run-image: build-image ## Run image
 sonarqube:
 	@docker build \
 		--build-arg GIT_BRANCH=$(GIT_BRANCH) \
-		--add-host sonar.jhee.co.kr:127.0.0.1 \
+		--add-host sonar.jerry.com:127.0.0.1 \
 		-f Dockerfile-sonar \
 		-t $(DOCKER_REPOSITORY):sonarqube .
 	@docker rmi $(DOCKER_REPOSITORY):sonarqube

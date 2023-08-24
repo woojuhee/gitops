@@ -1,5 +1,5 @@
 global:
-  imageRegistry: harbor.jhee.co.kr
+  imageRegistry: harbor.jerry.com
   storageClass: nfs-csi
 
 image:
