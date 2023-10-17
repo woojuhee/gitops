@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nfs-client-application
+  name: mariadb-galera-application
   namespace: argocd
 spec:
   project: mgmt-dev-prj
   source:
     repoURL: https://github.com/woojuhee/gitops.git
     targetRevision: master
-    path: gitops/mgmt/nfs-provisioner/kustomize/overlays/mgmt-dev
+    path: gitops/mgmt/mariadb-galera/kustomize/overlays/mgmt-dev
   destination:
     server: https://kubernetes.default.svc
     namespace: mgmt-dev
