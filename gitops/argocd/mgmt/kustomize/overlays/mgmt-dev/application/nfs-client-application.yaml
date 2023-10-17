@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nfs-client-app
+  name: nfs-client-application
   namespace: argocd
 spec:
-  project: mgmt-dev
+  project: mgmt-dev-prj
   source:
     repoURL: https://github.com/woojuhee/gitops.git
     targetRevision: master
-    path: mgmt/nfs-provisioner
+    path: gitops/mgmt/nfs-provisioner/
   destination:
     server: https://192.168.45.201:6443
     namespace: mgmt-dev
