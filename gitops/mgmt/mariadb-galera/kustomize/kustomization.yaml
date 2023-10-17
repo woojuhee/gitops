@@ -1,6 +1,0 @@
-resources:
-- ./base/generated/mariadb-galera/templates/configmap.yaml
-- ./base/generated/mariadb-galera/templates/headless-svc.yaml
-#- ./base/generated/mariadb-galera/templates/secrets.yaml
-- ./base/generated/mariadb-galera/templates/statefulset.yaml
-- ./base/generated/mariadb-galera/templates/svc.yaml

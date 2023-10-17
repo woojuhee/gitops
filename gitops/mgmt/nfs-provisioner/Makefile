@@ -22,6 +22,9 @@ generated: ## Helm chart template generated
 	@rm -rf ./$(HELM_GENERATED_PATH)/*
 	@helm template nfs-client --namespace $(NAMESPACE) -f ./$(HELM_VALUE_PATH) --output-dir ./$(HELM_GENERATED_PATH) nfs-subdir-external-provisioner/nfs-subdir-external-provisioner  
 
+build: ## Kustomize template build
+	@kubectl kustomize ./kustomize/overlays/mgmt-dev/
+
 build-image: ## Build image
 	@docker build -t $(DOCKER_REPOSITORY):latest .
 	@docker tag $(DOCKER_REPOSITORY):latest $(DOCKER_REPOSITORY):$(DOCKER_IMAGE_VERSION)

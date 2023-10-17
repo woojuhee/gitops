@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: mgmt-dev-prj
+spec:
+  sourceRepos:
+    - 'https://github.com/woojuhee/gitops'
+  destinations:
+    - namespace: mgmt-dev
+      server: https://192.168.45.201:6443
+  clusterResourceWhitelist:
+    - group: '*'
+    - kind: '*'
