@@ -1,0 +1,15 @@
+global:
+  storageClass: nfs-client
+
+image:
+  debug: true
+  repository: bitnami/mariadb-galera
+  tag: 11.0.3-debian-11-r7
+
+rootUser:
+  password: root
+
+replicaCount: 3
+
+persistence:
+  enabled: true
