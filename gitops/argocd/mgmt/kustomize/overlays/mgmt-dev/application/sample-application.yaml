@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+spec:
+  # 다른 애플리케이션 설정
+  # ...
+
+  # 동기화 정책 설정
+  syncPolicy:
+    automated:
+      prune: true  # 더 이상 필요하지 않는 리소스를 삭제할지 여부
+      selfHeal: true  # 변경사항을 자동으로 복구할지 여부
+    syncOptions:
+    - Validate=false  # 동기화 시 유효성 검사를 비활성화
+    - SkipDryRunOnMissingResource=true  # 리소스가 누락될 때 dry run을 건너뛸지 여부
+    - ApplyOutOfSyncOnly=true  # 오직 동기화가 필요한 경우에만 변경사항을 적용
+
+  # 다른 설정 및 매니페스트 정의
+  # ...
