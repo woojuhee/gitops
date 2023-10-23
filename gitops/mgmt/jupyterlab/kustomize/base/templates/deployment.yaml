@@ -19,7 +19,7 @@ spec:
             - containerPort: 8888
           volumeMounts:
             - name: jupyterlab-data
-              mountPath: /home/jovyan/work
+              mountPath: /home/jovyan
 
       volumes:
         - name: jupyterlab-data
