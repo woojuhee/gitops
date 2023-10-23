@@ -1,0 +1,22 @@
+---
+# Source: jenkins/templates/jenkins-agent-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-agent
+  namespace: mgmt-dev
+  labels:
+    "app.kubernetes.io/name": 'jenkins'
+    "helm.sh/chart": "jenkins-4.7.2"
+    "app.kubernetes.io/managed-by": "Helm"
+    "app.kubernetes.io/instance": "jenkins"
+    "app.kubernetes.io/component": "jenkins-controller"
+spec:
+  ports:
+    - port: 50000
+      targetPort: 50000
+      name: agent-listener
+  selector:
+    "app.kubernetes.io/component": "jenkins-controller"
+    "app.kubernetes.io/instance": "jenkins"
+  type: ClusterIP

@@ -5,3 +5,4 @@ resources:
 - ../../base/
 - ./application/nfs-client-application.yaml
 - ./application/mariadb-galera-application.yaml
+- ./application/jenkins-application.yaml
