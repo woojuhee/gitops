@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jupyterlab-application
+  namespace: argocd
+spec:
+  project: mgmt-dev-prj
+  source:
+    repoURL: https://github.com/woojuhee/gitops.git
+    targetRevision: master
+    path: gitops/mgmt/jupyterlab/kustomize/overlays/mgmt-dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mgmt-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

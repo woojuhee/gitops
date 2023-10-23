@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyterlab-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jupyterlab
+  template:
+    metadata:
+      labels:
+        app: jupyterlab
+    spec:
+      containers:
+        - name: jupyterlab
+          image: jupyter/base-notebook:x86_64-ubuntu-22.04
+          ports:
+            - containerPort: 8888
+          volumeMounts:
+            - name: jupyterlab-data
+              mountPath: /home/jovyan/work
+
+      volumes:
+        - name: jupyterlab-data
+          persistentVolumeClaim:
+            claimName: jupyterlab-pvc
