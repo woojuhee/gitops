@@ -1,0 +1,16 @@
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+  storageClass: "nfs-client"
+
+auth:
+  adminUser: admin
+  adminPassword: "Admin!23"
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hostname: keycloak.mgmt.cloud.com
+  tls: true
+  extraTls:
+  - name: mgmt-tls

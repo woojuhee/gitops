@@ -7,3 +7,4 @@ resources:
 - ./application/mariadb-galera-application.yaml
 - ./application/jenkins-application.yaml
 - ./application/jupyterlab-application.yaml
+- ./application/keycloak-application.yaml

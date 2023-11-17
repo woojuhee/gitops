@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+# - ./generated/keycloak/charts/postgresql/templates/secrets.yaml
+- ./generated/keycloak/charts/postgresql/templates/primary/svc.yaml
+- ./generated/keycloak/charts/postgresql/templates/primary/statefulset.yaml
+- ./generated/keycloak/charts/postgresql/templates/primary/svc-headless.yaml
+- ./generated/keycloak/templates/configmap-env-vars.yaml
+# - ./generated/keycloak/templates/secrets.yaml
+- ./generated/keycloak/templates/ingress.yaml
+- ./generated/keycloak/templates/service.yaml
+- ./generated/keycloak/templates/headless-service.yaml
+- ./generated/keycloak/templates/serviceaccount.yaml
+- ./generated/keycloak/templates/statefulset.yaml
