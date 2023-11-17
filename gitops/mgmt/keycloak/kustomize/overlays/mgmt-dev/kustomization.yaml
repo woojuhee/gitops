@@ -3,4 +3,5 @@ kind: Kustomization
 namespace: mgmt-dev  # Set the namespace
 resources:
 - ../../base
-- ./secrets/
+- ./secrets/postgresql/secrets.yaml
+- ./secrets/keycloak/secrets.yaml
