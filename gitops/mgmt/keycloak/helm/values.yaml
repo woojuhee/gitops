@@ -13,4 +13,15 @@ ingress:
   hostname: keycloak.mgmt.cloud.com
   tls: true
   extraTls:
-  - name: mgmt-tls
+  - hosts:
+    - keycloak.mgmt.cloud.com
+    secretName: mgmt-tls
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "test"
+    username: bn_keycloak
+    password: "test"
+    database: bitnami_keycloak
+    existingSecret: ""
+  architecture: standalone

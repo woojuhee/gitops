@@ -26,4 +26,6 @@ spec:
                 port:
                   name: http
   tls:
-    - name: mgmt-tls
+    - hosts:
+      - keycloak.mgmt.cloud.com
+      secretName: mgmt-tls
