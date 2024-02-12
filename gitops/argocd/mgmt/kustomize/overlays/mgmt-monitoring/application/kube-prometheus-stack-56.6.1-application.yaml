@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack-application
+  name: kube-prometheus-stack-56.6.1-application
   namespace: argocd
 spec:
   project: mgmt-monitoring-prj
   source:
     repoURL: https://github.com/woojuhee/gitops.git
     targetRevision: master
-    path: gitops/mgmt/kube-prometheus-stack/48.3.3/kustomize/overlays/mgmt-monitoring
+    path: gitops/mgmt/kube-prometheus-stack/56.6.1/kustomize/overlays/mgmt-monitoring
   destination:
     server: https://kubernetes.default.svc
     namespace: mgmt-monitoring

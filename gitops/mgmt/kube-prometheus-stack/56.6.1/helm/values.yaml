@@ -1,0 +1,32 @@
+alertmanager:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - alertmanager.mgmt.cloud.com
+    paths:
+      - /
+
+grafana:
+  defaultDashboardsTimezone: Asia/Seoul
+  adminPassword: Admin!23
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - grafana.mgmt.cloud.com
+    paths:
+      - /*
+
+prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - prometheus.mgmt.cloud.com
+    paths:
+      - /
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    retention: 5d
+    retentionSize: "10GiB"
