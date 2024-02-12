@@ -5,7 +5,7 @@ alertmanager:
     hosts:
       - alertmanager.mgmt.cloud.com
     paths:
-      - /*
+      - /
 
 grafana:
   defaultDashboardsTimezone: Asia/Seoul
@@ -25,7 +25,7 @@ prometheus:
     hosts:
       - prometheus.mgmt.cloud.com
     paths:
-      - /*
+      - /
   prometheusSpec:
     serviceMonitorSelectorNilUsesHelmValues: false
     retention: 5d

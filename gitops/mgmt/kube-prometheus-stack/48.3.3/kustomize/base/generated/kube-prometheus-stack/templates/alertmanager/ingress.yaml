@@ -21,7 +21,7 @@ spec:
     - host: alertmanager.mgmt.cloud.com
       http:
         paths:
-          - path: /*
+          - path: /
             pathType: ImplementationSpecific
             backend:
               service:

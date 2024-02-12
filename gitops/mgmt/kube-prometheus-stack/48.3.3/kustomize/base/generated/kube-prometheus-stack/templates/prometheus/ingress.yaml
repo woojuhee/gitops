@@ -21,7 +21,7 @@ spec:
     - host: prometheus.mgmt.cloud.com
       http:
         paths:
-          - path: /*
+          - path: /
             pathType: ImplementationSpecific
             backend:
               service:
