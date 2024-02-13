@@ -17,6 +17,20 @@ controller:
     enabled: true
     ingressClassName: nginx
     hostName: jenkins.mgmt.cloud.com
+  additionalContainers:
+    - sideContainerName: dind
+      image: docker
+      tag: dind
+      command: dockerd-entrypoint.sh
+      args: ""
+      privileged: true
+      resources:
+        requests:
+          cpu: 500m
+          memory: 1Gi
+        limits:
+          cpu: 1
+          memory: 2Gi
 persistence:
   enabled: true
   existingClaim:

@@ -19,4 +19,4 @@ spec:
   selector:
     "app.kubernetes.io/component": "jenkins-controller"
     "app.kubernetes.io/instance": "jenkins"
-  type: NodePort
+  type: ClusterIP
