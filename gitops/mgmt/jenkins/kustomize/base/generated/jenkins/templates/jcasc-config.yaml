@@ -51,7 +51,7 @@ data:
           templates:
             - name: "default"
               namespace: "mgmt-dev"
-              id: a6e410bbc54d23e84ac3f58bd1608da0e09b1ef712ce19292fc4c1ee6c8add69
+              id: 50a1ac3d068506e02c96e6e3fbd4446c76ab6d7963c4a45db4ac2e639eea2aec
               containers:
               - name: "jnlp"
                 alwaysPullImage: false
@@ -67,6 +67,24 @@ data:
                 resourceLimitMemory: 512Mi
                 resourceRequestCpu: 512m
                 resourceRequestMemory: 512Mi
+                runAsUser: 
+                runAsGroup: 
+                ttyEnabled: false
+                workingDir: /home/jenkins/agent
+              - name: "dind"
+                alwaysPullImage: false
+                args: ""
+                command: dockerd-entrypoint.sh
+                envVars:
+                  - envVar:
+                      key: "JENKINS_URL"
+                      value: "http://jenkins.mgmt-dev.svc.cluster.local:8080/"
+                image: "docker:dind"
+                privileged: "true"
+                resourceLimitCpu: 1
+                resourceLimitMemory: 2Gi
+                resourceRequestCpu: 500m
+                resourceRequestMemory: 1Gi
                 runAsUser: 
                 runAsGroup: 
                 ttyEnabled: false

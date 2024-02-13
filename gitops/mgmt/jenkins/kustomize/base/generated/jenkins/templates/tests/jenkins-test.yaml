@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "jenkins-ui-test-r0tm2"
+  name: "jenkins-ui-test-pupfv"
   namespace: mgmt-dev
   annotations:
     "helm.sh/hook": test-success

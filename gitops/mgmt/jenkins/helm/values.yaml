@@ -17,6 +17,7 @@ controller:
     enabled: true
     ingressClassName: nginx
     hostName: jenkins.mgmt.cloud.com
+agent:
   additionalContainers:
     - sideContainerName: dind
       image: docker
