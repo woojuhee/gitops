@@ -8,3 +8,4 @@ resources:
 - ./application/jenkins-application.yaml
 - ./application/jupyterlab-application.yaml
 - ./application/keycloak-application.yaml
+- ./application/spring-petclinic-data-jdbc-application.yaml

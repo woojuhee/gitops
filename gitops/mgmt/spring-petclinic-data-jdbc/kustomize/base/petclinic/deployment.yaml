@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic
+  template:
+    metadata:
+      labels:
+        app: petclinic
+    spec:
+      containers:
+      - name: petclinic-container
+        image: jheewoo/spring-petclinic-data-jdbc:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - name: config-volume
+          mountPath: /home/spring/application.properties
+          subPath: application.properties
+        - name: petclinic-logpath
+          mountPath: /logs
+        env:
+        - name: MYSQL_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: petclinic-secret
+              key: MYSQL_USERNAME
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: petclinic-secret
+              key: MYSQL_PASSWORD
+        - name: MYSQL_HOSTNAME
+          value: mysql-service.default.svc.cluster.local:3306/petclinic
+      volumes:
+      - name: config-volume
+        configMap:
+          name: mysql-petclinic-configmap
+      - name: petclinic-logpath
+        hostPath:
+          type: Directory
+          path: /logs
