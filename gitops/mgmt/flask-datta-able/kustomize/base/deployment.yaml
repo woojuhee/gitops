@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-datta-able-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-datta-able
+  template:
+    metadata:
+      labels:
+        app: flask-datta-able
+    spec:
+      containers:
+      - name: flask-datta-able-container
+        image: jheewoo/flask-datta-able:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - name: flask-datta-able-logpath
+          mountPath: /logs
+      volumes:
+      - name: flask-datta-able-logpath
+        hostPath:
+          type: Directory
+          path: /logs
