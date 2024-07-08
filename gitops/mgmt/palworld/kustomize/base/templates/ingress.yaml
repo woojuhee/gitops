@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: palworld
+spec:
+  ingressClassName: "nginx"
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: palworld-server
+            port:
+              number: 8211
+        pathType: ImplementationSpecific
+    host: palworld.mgmt.cloud.com

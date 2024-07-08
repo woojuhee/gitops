@@ -8,6 +8,7 @@ resources:
 - ./templates/cronjob/rolebinding.yaml
 - ./templates/configmap.yaml
 - ./templates/deployment.yaml
+- ./templates/ingress.yaml
 - ./templates/service.yaml
 - ./templates/secret.yaml
 - ./templates/pvc.yaml
