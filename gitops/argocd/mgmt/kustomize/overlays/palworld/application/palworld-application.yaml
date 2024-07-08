@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: palworld-application
-  namespace: argocd
+  namespace: argo-cd
 spec:
   project: palworld-prj
   source:
