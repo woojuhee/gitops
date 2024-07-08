@@ -8,13 +8,15 @@ metadata:
 spec:
   ports:
     - name: server
+      nodePort: 30088
       port: 8211
       protocol: UDP
       targetPort: server
     - name: query
+      nodePort: 30089
       port: 27015
       protocol: UDP
       targetPort: query
   selector:
     app: palworld-server
-  type: ClusterIP
+  type: NodePort
