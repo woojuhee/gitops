@@ -15,7 +15,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: "v2.11.4"
   name: argocd-redis-secret-init
-  namespace: "argocd"
+  namespace: "argo-cd"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role

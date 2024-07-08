@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: argocd-notifications-controller
-  namespace: argocd
+  namespace: argo-cd
   labels:
     helm.sh/chart: argo-cd-7.3.4
     app.kubernetes.io/name: argocd-notifications-controller
@@ -45,7 +45,7 @@ spec:
             - --metrics-port=9001
             - --loglevel=info
             - --logformat=text
-            - --namespace=argocd
+            - --namespace=argo-cd
             - --argocd-repo-server=argocd-repo-server:8081
             - --secret-name=argocd-notifications-secret
           env:

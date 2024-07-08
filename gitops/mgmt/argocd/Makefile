@@ -17,9 +17,8 @@ check-git-clean: ## Check git
 		echo "Working directory is not clean. "; exit 1; \
 	fi
 generated: ## Helm chart template generated
-	@helm repo update
 	@rm -rf ./$(HELM_GENERATED_PATH)/*
-	@helm template argocd --namespace $(NAMESPACE) -f ./$(HELM_VALUE_PATH) --output-dir ./$(HELM_GENERATED_PATH) argo/argo-cd --version $(HELM_CHART_VERSION)
+	@helm template argocd --namespace $(NAMESPACE) -f ./$(HELM_VALUE_PATH) --output-dir ./$(HELM_GENERATED_PATH) oci://ghcr.io/argoproj/argo-helm/argo-cd --version $(HELM_CHART_VERSION)
 
 build: ## Kustomize template build
 	@kubectl kustomize ./kustomize/overlays/$(NAMESPACE)/

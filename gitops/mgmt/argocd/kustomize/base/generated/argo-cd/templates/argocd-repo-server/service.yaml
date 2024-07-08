@@ -12,7 +12,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: "v2.11.4"
   name: argocd-repo-server
-  namespace: argocd
+  namespace: argo-cd
 spec:  
   ports:
   - name: tcp-repo-server

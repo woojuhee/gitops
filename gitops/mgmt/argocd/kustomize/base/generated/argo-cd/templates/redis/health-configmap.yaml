@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: argocd-redis-health-configmap
-  namespace: argocd
+  namespace: argo-cd
   labels:
     helm.sh/chart: argo-cd-7.3.4
     app.kubernetes.io/name: argocd-redis

@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: argocd-application-controller
-  namespace: argocd
+  namespace: argo-cd
   labels:
     helm.sh/chart: argo-cd-7.3.4
     app.kubernetes.io/name: argocd-application-controller
@@ -24,8 +24,8 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cmd-params: 45598ffe004337f3d12634d1898e561eb5ddb8e9dbdb8c60ac973919998e697b
-        checksum/cm: 2593f8631ea3d81fe43f3cad3dec0d7427949f0c4dca8de56935184e5e862620
+        checksum/cmd-params: 2a99403728d9edb4e99929ce0fda9a63dfdbe0094a3c2ed7253cbd4921dbe0a0
+        checksum/cm: a78e294215af63f4608f22e596c653c2fbc472e2b1000a4533b7c36e0fcdf714
       labels:
         helm.sh/chart: argo-cd-7.3.4
         app.kubernetes.io/name: argocd-application-controller
