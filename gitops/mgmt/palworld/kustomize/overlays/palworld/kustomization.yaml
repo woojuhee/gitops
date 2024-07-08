@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: palworld
+resources:
+- ../../base
+
+images:
+- name: thijsvanloef/palworld-server-docker
+  newTag: dev
+
+patches:
+  - target:
+      kind: Deployment
+      name: palworld-server
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/limits/memory
+        value: "20Gi"
+      - op: add
+        path: /spec/template/spec/nodeSelector
+        value:
+          kubernetes.io/staem: "yes"

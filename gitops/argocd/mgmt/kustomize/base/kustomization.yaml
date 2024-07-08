@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - ./project/mgmt-dev-project.yaml
 - ./project/mgmt-monitoring-project.yaml
+- ./project/palworld-project.yaml

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: palworld-application
+  namespace: argocd
+spec:
+  project: palworld-prj
+  source:
+    repoURL: https://github.com/woojuhee/gitops.git
+    targetRevision: master
+    path: gitops/mgmt/palworld/kustomize/overlays/palworld
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: palworld
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - SkipDryRunOnMissingResource=true
+    - ApplyOutOfSyncOnly=true

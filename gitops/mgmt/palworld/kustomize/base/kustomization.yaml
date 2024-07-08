@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ./templates/cronjob/role.yaml
+- ./templates/cronjob/cronjob.yaml
+- ./templates/cronjob/cm.yaml
+- ./templates/cronjob/serviceaccount.yaml
+- ./templates/cronjob/rolebinding.yaml
+- ./templates/configmap.yaml
+- ./templates/deployment.yaml
+- ./templates/service.yaml
+- ./templates/secret.yaml
+- ./templates/pvc.yaml
