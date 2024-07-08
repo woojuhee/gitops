@@ -19,4 +19,4 @@ patches:
       - op: add
         path: /spec/template/spec/nodeSelector
         value:
-          kubernetes.io/staem: "yes"
+          kubernetes.io/steam: "yes"
