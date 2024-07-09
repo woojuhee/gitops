@@ -19,12 +19,12 @@ check-git-clean: ## Check git
 generated: ## Helm chart template generated
 	@rm -rf ./$(HELM_GENERATED_PATH)/*
 	@helm template argocd --namespace $(NAMESPACE) -f ./$(HELM_VALUE_PATH) --output-dir ./$(HELM_GENERATED_PATH) oci://ghcr.io/argoproj/argo-helm/argo-cd --version $(HELM_CHART_VERSION)
+	@cp -r ./$(HELM_GENERATED_PATH)/$(NAMESPACE)/templates/crds/* ./kustomize/overlays/$(NAMESPACE)/crds
 
 build: ## Kustomize template build
 	@kubectl kustomize ./kustomize/overlays/$(NAMESPACE)/
 
 deploy:
-	@kubectl apply -k https://github.com/argoproj/argo-cd/manifests/crds\?ref\=stable
 	@kubectl apply -k ./kustomize/overlays/$(NAMESPACE)/
 
 sonarqube:

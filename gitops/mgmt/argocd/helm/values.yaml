@@ -17,12 +17,12 @@ repoServer:
 applicationSet:
   replicas: 1
 
-global:
-  domain: argocd.mgmt.cloud.com
-
 configs:
   params:
     server.insecure: true
+
+global:
+  domain: argocd.mgmt.cloud.com
 
 server:
   ingress:
