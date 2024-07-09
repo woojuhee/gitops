@@ -39,7 +39,7 @@ data:
           defaultsProviderTemplate: ""
           connectTimeout: "5"
           readTimeout: "15"
-          jenkinsUrl: "http://jenkins.mgmt-dev.svc.cluster.local:8080"
+          jenkinsUrl: "jenkins.mgmt.cloud.com"
           jenkinsTunnel: "jenkins-agent.mgmt-dev.svc.cluster.local:50000"
           maxRequestsPerHostStr: "32"
           name: "kubernetes"
@@ -51,7 +51,7 @@ data:
           templates:
             - name: "default"
               namespace: "mgmt-dev"
-              id: 50a1ac3d068506e02c96e6e3fbd4446c76ab6d7963c4a45db4ac2e639eea2aec
+              id: fc9de99bc09d661121255915e61ceb316ecaf8f40b876baeeb27ac42920ddc9a
               containers:
               - name: "jnlp"
                 alwaysPullImage: false
@@ -60,7 +60,7 @@ data:
                 envVars:
                   - envVar:
                       key: "JENKINS_URL"
-                      value: "http://jenkins.mgmt-dev.svc.cluster.local:8080/"
+                      value: jenkins.mgmt.cloud.com
                 image: "jenkins/inbound-agent:3107.v665000b_51092-15"
                 privileged: "false"
                 resourceLimitCpu: 512m
@@ -80,11 +80,11 @@ data:
                       key: "JENKINS_URL"
                       value: "http://jenkins.mgmt-dev.svc.cluster.local:8080/"
                 image: "docker:dind"
-                privileged: "true"
-                resourceLimitCpu: 1
-                resourceLimitMemory: 2Gi
-                resourceRequestCpu: 500m
-                resourceRequestMemory: 1Gi
+                privileged: "false"
+                resourceLimitCpu: 512m
+                resourceLimitMemory: 512Mi
+                resourceRequestCpu: 512m
+                resourceRequestMemory: 512Mi
                 runAsUser: 
                 runAsGroup: 
                 ttyEnabled: false
@@ -97,6 +97,30 @@ data:
               showRawYaml: true
               serviceAccount: "default"
               slaveConnectTimeoutStr: "100"
+              yaml: |-
+                apiVersion: v1
+                kind: Pod
+                spec:
+                  containers:
+                  - name: agent
+                    image: jenkins/jnlp-agent-docker
+                    resources:
+                      requests:
+                        memory: "512Mi"
+                        cpu: "500m"
+                      limits:
+                        memory: "1Gi"
+                        cpu: "1"
+                    command:
+                    - cat
+                    tty: true
+                    volumeMounts:
+                      - mountPath: /var/run/docker.sock
+                        name: docker-sock
+                  volumes:
+                  - name: docker-sock
+                    hostPath:
+                      path: /var/run/docker.sock
               yamlMergeStrategy: override
       crumbIssuer:
         standard:

@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "jenkins-ui-test-pupfv"
+  name: "jenkins-ui-test-oqob2"
   namespace: mgmt-dev
   annotations:
     "helm.sh/hook": test-success

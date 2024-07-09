@@ -18,20 +18,43 @@ controller:
     ingressClassName: nginx
     hostName: jenkins.mgmt.cloud.com
 agent:
+  enabled: true
+  jenkinsUrl: jenkins.mgmt.cloud.com
+  namespace: mgmt-dev
+  image: "jenkins/inbound-agent"
+  tag: "3107.v665000b_51092-15"
+  podName: "default"
+  yamlTemplate: |-
+    apiVersion: v1
+    kind: Pod
+    spec:
+      containers:
+      - name: agent
+        image: jenkins/jnlp-agent-docker
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+        command:
+        - cat
+        tty: true
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-sock
+      volumes:
+      - name: docker-sock
+        hostPath:
+          path: /var/run/docker.sock
   additionalContainers:
     - sideContainerName: dind
       image: docker
       tag: dind
       command: dockerd-entrypoint.sh
       args: ""
-      privileged: true
-      resources:
-        requests:
-          cpu: 500m
-          memory: 1Gi
-        limits:
-          cpu: 1
-          memory: 2Gi
+      tty: true
 persistence:
   enabled: true
   existingClaim:
@@ -40,4 +63,3 @@ persistence:
   labels: {}
   accessMode: "ReadWriteMany"
   size: "8Gi"
-
