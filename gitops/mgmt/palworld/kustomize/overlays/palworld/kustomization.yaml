@@ -27,3 +27,9 @@ patches:
       - op: replace
         path: /spec/schedule
         value: "30 */3 * * *"
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/revisionHistoryLimit
+        value: 3
