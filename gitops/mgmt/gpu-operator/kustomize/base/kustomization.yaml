@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/role.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/worker.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/nfd-gc.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/clusterrole.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/nfd-master-conf.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/serviceaccount.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/nfd-topologyupdater-conf.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/clusterrolebinding.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/rolebinding.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/nfd-worker-conf.yaml
+- ./generated/gpu-operator/charts/node-feature-discovery/templates/master.yaml
+- ./generated/gpu-operator/templates/role.yaml
+- ./generated/gpu-operator/templates/clusterpolicy.yaml
+- ./generated/gpu-operator/templates/operator.yaml
+- ./generated/gpu-operator/templates/serviceaccount.yaml
+- ./generated/gpu-operator/templates/rolebinding.yaml
