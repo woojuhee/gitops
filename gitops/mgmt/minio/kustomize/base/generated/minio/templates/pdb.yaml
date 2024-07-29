@@ -1,0 +1,19 @@
+---
+# Source: minio/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: minio
+  namespace: "mgmt-dev"
+  labels:
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: minio
+    app.kubernetes.io/version: 2024.7.15
+    helm.sh/chart: minio-14.6.22
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: minio
+      app.kubernetes.io/name: minio

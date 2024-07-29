@@ -1,0 +1,27 @@
+---
+# Source: minio/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  namespace: "mgmt-dev"
+  labels:
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: minio
+    app.kubernetes.io/version: 2024.7.15
+    helm.sh/chart: minio-14.6.22
+spec:
+  type: ClusterIP
+  ports:
+    - name: minio-api
+      port: 9000
+      targetPort: minio-api
+      nodePort: null
+    - name: minio-console
+      port: 9001
+      targetPort: minio-console
+      nodePort: null
+  selector:
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/name: minio

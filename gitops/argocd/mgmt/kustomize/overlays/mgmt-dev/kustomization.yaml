@@ -10,3 +10,4 @@ resources:
 - ./application/keycloak-application.yaml
 - ./application/spring-petclinic-data-jdbc-application.yaml
 - ./application/flask-datta-able-application.yaml
+- ./application/minio-application.yaml

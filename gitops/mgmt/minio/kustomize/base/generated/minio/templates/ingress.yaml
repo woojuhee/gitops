@@ -1,0 +1,28 @@
+---
+# Source: minio/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio
+  namespace: "mgmt-dev"
+  labels:
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: minio
+    app.kubernetes.io/version: 2024.7.15
+    helm.sh/chart: minio-14.6.22
+  annotations:
+    {}
+spec:
+  ingressClassName: "nginx"
+  rules:
+    - host: minio.mgmt.cloud.com
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: minio
+                port:
+                  name: minio-console

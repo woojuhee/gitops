@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ./generated/minio/templates/ingress.yaml
+- ./generated/minio/templates/pdb.yaml
+- ./generated/minio/templates/standalone/deployment.yaml
+- ./generated/minio/templates/networkpolicy.yaml
+- ./generated/minio/templates/serviceaccount.yaml
+- ./generated/minio/templates/pvc.yaml
+- ./generated/minio/templates/service.yaml
+- ./generated/minio/templates/secrets.yaml
