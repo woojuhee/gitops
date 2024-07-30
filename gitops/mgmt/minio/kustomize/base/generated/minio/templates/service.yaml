@@ -18,11 +18,11 @@ spec:
     - name: minio-api
       port: 9000
       targetPort: minio-api
-      nodePort: 39000
+      nodePort: 30900
     - name: minio-console
       port: 9001
       targetPort: minio-console
-      nodePort: 39001
+      nodePort: 30901
   selector:
     app.kubernetes.io/instance: minio
     app.kubernetes.io/name: minio

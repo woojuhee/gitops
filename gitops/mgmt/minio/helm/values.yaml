@@ -745,8 +745,8 @@ service:
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
   nodePorts:
-    api: "39000"
-    console: "39001"
+    api: "30900"
+    console: "30901"
   ## @param service.clusterIP Service Cluster IP
   ## e.g.:
   ## clusterIP: None
